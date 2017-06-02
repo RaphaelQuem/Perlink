@@ -9,16 +9,26 @@ namespace NumerosFelizesSortudos
         {
             while (true)
             {
-                Console.WriteLine("Informe um número!");
-                string input = Console.ReadLine();
-                int n;
-                while (!int.TryParse(input, out n))
+                try
                 {
-                    Console.WriteLine("Favor informe um número inteiro entre 0  e 9.999.999");
-                    input = Console.ReadLine();
-                }
 
-                Console.WriteLine(string.Format("{0} - Número {1} e {2}", n, (n.isLucky() ? "Sortudo" : "Não-Sortudo"), (n.isHappy() ? "Feliz" : "Não-Feliz")));
+                    Console.WriteLine("Informe um número!");
+                    string input = Console.ReadLine();
+                    int n;
+                    while (!int.TryParse(input, out n))
+                    {
+                        Console.WriteLine("Favor informe um número inteiro entre 0  e 9.999.999");
+                        input = Console.ReadLine();
+                    }
+
+                    Console.WriteLine(string.Format("{0} - Número {1} e {2}", n, (n.isLucky() ? "Sortudo" : "Não-Sortudo"), (n.isHappy() ? "Feliz" : "Não-Feliz")));
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine("Erro na validação:");
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
     }
